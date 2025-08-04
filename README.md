@@ -4,7 +4,7 @@
 
 **Profesor:** Andres Felipe Perez Campillo
 
-[Link a la presentacion del curso](https://docs.google.com/presentation/d/145_nbn9GZwi38kz8-tX64fZiU1_GKAWR5l8-rvLlu3E/edit?usp=sharing)
+[Link a la presentacion del curso y ejercicios presentes](https://docs.google.com/presentation/d/145_nbn9GZwi38kz8-tX64fZiU1_GKAWR5l8-rvLlu3E/edit?usp=sharing)
 
 ---
 
