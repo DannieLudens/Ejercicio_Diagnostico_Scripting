@@ -41,6 +41,8 @@ Se organizaron las clases en archivos separados, pero pertenecen al mismo *names
 `AbstractSample.cs`
 
 ```csharp
+using System;
+
 namespace OOP_Recorderis_MessageApp
 {
     // Clase abstracta que define la base para las subclases
@@ -80,6 +82,8 @@ namespace OOP_Recorderis_MessageApp
 `SimplePrinter.cs`
 
 ```csharp
+using System;
+
 namespace OOP_Recorderis_MessageApp
 {
     // Subclase que imprime el mensaje tal como está
@@ -100,6 +104,8 @@ namespace OOP_Recorderis_MessageApp
 `FancyPrinter.cs`
 
 ```csharp
+using System;
+
 namespace OOP_Recorderis_MessageApp
 {
     // Subclase que imprime el mensaje con mayúsculas y minúsculas invertidas
