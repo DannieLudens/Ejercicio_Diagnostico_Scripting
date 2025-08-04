@@ -3,56 +3,40 @@
 Comencemos con lo Inicial
 
 ```csharp
-using System; // Importa funcionalidades básicas como entrada y salida por consola
-using System.Collections.Generic; // Permite usar listas dinámicas (List<int>)
+using System; // Importa funcionalidades bÃ¡sicas como entrada y salida por consola
+using System.Collections.Generic; // Permite usar listas dinÃ¡micas (List<int>)
 
 ```
 
 Clase principal para ejecutar el programa
 ```csharp
-class Program // Define la clase principal del programa
+class Program // Clase principal del programa
 {
-    static void Main() // Método que se ejecuta primero cuando corres el programa
+    static void Main() 
     {
-        Console.Write("Ingrese el número de términos de la serie Fibonacci: ");
-        // Imprime un mensaje en consola para que el usuario escriba un número
+        Console.Write("Ingrese el nÃºmero de tÃ©rminos de la serie Fibonacci: "); // Imprime un mensaje en consola para que el usuario escriba un nÃºmero
 
-        string entrada = Console.ReadLine();
-        // Captura el texto que el usuario escribe
+        string entrada = Console.ReadLine(); // Captura el texto que el usuario escribe
 
-        int n; // Declara la variable donde guardaremos el número convertido
+        int n; // Declara la variable donde guardaremos el nÃºmero convertido
 
-        if (int.TryParse(entrada, out n) && n > 0)
+        if (int.TryParse(entrada, out n) && n > 0) // Intenta convertir el texto a nÃºmero y verifica que sea mayor a 0
         {
-            // Intenta convertir el texto a número y verifica que sea mayor a 0
+            Console.WriteLine($"NÃºmeros primos en los primeros {n} tÃ©rminos de Fibonacci:"); // Imprime una cabecera para los resultados
+            List<int> secuencia = Fibonacci.Generar(n); // Llama al mÃ©todo de la clase Fibonacci para generar la secuencia
 
-            Console.WriteLine($"Números primos en los primeros {n} términos de Fibonacci:");
-            // Imprime una cabecera para los resultados
-
-            List<int> secuencia = Fibonacci.Generar(n);
-            // Llama al método de la clase Fibonacci para generar la secuencia
-
-            foreach (int numero in secuencia)
+            foreach (int numero in secuencia) // Recorre cada nÃºmero de la secuencia Fibonacci
             {
-                // Recorre cada número de la secuencia Fibonacci
-
-                if (Primo.EsPrimo(numero))
+                if (Primo.EsPrimo(numero)) // Verifica si el nÃºmero actual es primo usando la clase Primo
                 {
-                    // Verifica si el número actual es primo usando la clase Primo
-
-                    Console.Write(numero + " ");
-                    // Si es primo, lo imprime seguido de un espacio
+                  Console.Write(numero + " "); // Si es primo, lo imprime seguido de un espacio
                 }
             }
-
-            Console.WriteLine(); // Salto de línea al final para que se vea ordenado
+            Console.WriteLine(); // Salto de lÃ­nea al final para que se vea ordenado
         }
-        else
+        else // Si el usuario no ingresÃ³ un nÃºmero vÃ¡lido
         {
-            // Si el usuario no ingresó un número válido
-
-            Console.WriteLine("Por favor, ingrese un número entero positivo válido.");
-            // Muestra mensaje de error
+            Console.WriteLine("Por favor, ingrese un nÃºmero entero positivo vÃ¡lido."); // Muestra mensaje de error
         }
     }
 }
@@ -63,69 +47,50 @@ Clase Fibonacci para generar la serie de Fibonacci
 ```csharp
 class Fibonacci // Clase que se encarga de generar la serie de Fibonacci
 {
-    public static List<int> Generar(int n)
+    public static List<int> Generar(int n) // MÃ©todo estÃ¡tico que devuelve una lista con los primeros n tÃ©rminos
     {
-        // Método estático que devuelve una lista con los primeros n términos
+        List<int> secuencia = new List<int>(); // Crea una lista vacÃ­a para guardar los nÃºmeros
 
-        List<int> secuencia = new List<int>();
-        // Crea una lista vacía para guardar los números
-
-        int a = 0, b = 1;
-        // Inicializa los dos primeros términos de Fibonacci
-
-        for (int i = 0; i < n; i++)
+        int a = 0, b = 1; // Inicializa los dos primeros tÃ©rminos de Fibonacci
+        
+        for (int i = 0; i < n; i++) // Repite el proceso n veces (desde 0 hasta n-1)
         {
-            // Repite el proceso n veces (desde 0 hasta n-1)
-
             if (i == 0)
-                secuencia.Add(a); // Agrega el primer término (0)
+                secuencia.Add(a); // Agrega el primer tÃ©rmino (0)
             else if (i == 1)
-                secuencia.Add(b); // Agrega el segundo término (1)
+                secuencia.Add(b); // Agrega el segundo tÃ©rmino (1)
             else
             {
-                int siguiente = a + b; // Suma los dos anteriores para obtener el nuevo término
-                secuencia.Add(siguiente); // Agrega el nuevo número a la lista
+                int siguiente = a + b; // Suma los dos anteriores para obtener el nuevo tÃ©rmino
+                secuencia.Add(siguiente); // Agrega el nuevo nÃºmero a la lista
                 a = b; // Actualiza los valores: el segundo se convierte en el primero
                 b = siguiente; // Y el nuevo se convierte en el segundo
             }
         }
-
-        return secuencia;
-        // Devuelve la lista completa con los n términos
+        return secuencia; // Devuelve la lista completa con los n tÃ©rminos
     }
 }
 
 ```
 
-Clase Primo Para verificar si un número es primo
+Clase Primo Para verificar si un nÃºmero es primo
 ```csharp
-class Primo // Clase que se encarga de verificar si un número es primo
+class Primo // Clase que se encarga de verificar si un nÃºmero es primo
 {
-    public static bool EsPrimo(int num)
+    public static bool EsPrimo(int num) // MÃ©todo que recibe un nÃºmero entero y devuelve true si es primo
     {
-        // Método que recibe un número entero y devuelve true si es primo
-
-        if (num <= 1) return false;
-        // 0 y 1 no son primos por definición
-
-        if (num == 2) return true;
-        // 2 es el único número par que sí es primo
-
-        if (num % 2 == 0) return false;
-        // Todos los demás pares no son primos
-
+        if (num <= 1) return false; // 0 y 1 no son primos por definiciÃ³n
+        if (num == 2) return true; // 2 es el Ãºnico nÃºmero par que sÃ­ es primo
+        if (num % 2 == 0) return false; // Todos los demÃ¡s pares no son primos
+        
+        // Recorre los nÃºmeros impares desde 3 hasta la raÃ­z cuadrada del nÃºmero
+        // Esto es mÃ¡s eficiente que revisar hasta el nÃºmero completo
         for (int i = 3; i <= Math.Sqrt(num); i += 2)
         {
-            // Recorre los números impares desde 3 hasta la raíz cuadrada del número
-            // Esto es más eficiente que revisar hasta el número completo
-
-            if (num % i == 0)
+            if (num % i == 0) // Si el nÃºmero es divisible por i, entonces no es primo
                 return false;
-            // Si el número es divisible por i, entonces no es primo
         }
-
-        return true;
-        // Si no se encontró ningún divisor, entonces es primo
+        return true; // Si no se encontrÃ³ ningÃºn divisor, entonces es primo
     }
 }
 ```
